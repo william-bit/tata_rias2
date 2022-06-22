@@ -7,7 +7,7 @@ import Sort from "./Sort";
 const List = () => {
   return (
     <div className="px-10 mt-4">
-      <div className="font-bold">Searching Rooms</div>
+      <div className="font-bold">Searching Salon</div>
       <div className="flex mt-5">
         <div className="w-3/12 pr-10">
           <Location></Location>

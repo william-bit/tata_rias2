@@ -34,7 +34,7 @@ const CheckInView = () => {
           onClick={() => setShowCalendar(!showCalendar)}
         >
           <CalendarIcon className="w-5 h-5 text-gray-600"></CalendarIcon>
-          Rent duration
+          Date Visit
         </button>
 
         <div className={`${showCalendar ? "" : "hidden"} absolute w-full mt-2`}>
