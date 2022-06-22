@@ -7,10 +7,10 @@ import Register from "./pages/register/Index";
 import Admin from "./pages/admin/Index";
 import Product from "./pages/admin/Product";
 import Vendor from "./pages/Vendor";
-import Renter from "./pages/register/Renter";
-import Tenant from "./pages/register/Tenant";
 import { checkGetToken } from "./utils/authenticate";
 import { ToastContainer } from "react-toastify";
+import Customer from "./pages/register/Customer";
+import VendorRegister from "./pages/register/Vendor";
 
 function App() {
   checkGetToken();
@@ -24,8 +24,8 @@ function App() {
         <Route path="/detail" element={<Detail />} />
         <Route path="/vendor" element={<Vendor />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register/renter" element={<Renter />} />
-        <Route path="/register/tenant" element={<Tenant />} />
+        <Route path="/register/vendor" element={<VendorRegister />} />
+        <Route path="/register/customer" element={<Customer />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/product" element={<Product />} />
       </Routes>

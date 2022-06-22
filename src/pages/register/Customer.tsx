@@ -16,7 +16,7 @@ export interface ILaravelApiErrorReturn {
   };
 }
 
-const Tenant = () => {
+const Customer = () => {
   const [form, setForm] = useState<IRegisterParam>({
     name: "",
     address: "",
@@ -185,4 +185,4 @@ const Tenant = () => {
   );
 };
 
-export default Tenant;
+export default Customer;

@@ -64,15 +64,18 @@ const InputForm = () => {
   return (
     <div className="w-1/4 border-2 shadow-md ">
       <div className="w-full py-2 text-2xl font-bold text-center text-black">
-        Add New Room
+        Add New Service
       </div>
       <div className="w-full ">
         <div className="px-5 py-3">
-          <TextInput label="Room" placeholder="Room for Customer"></TextInput>
+          <TextInput
+            label="Service"
+            placeholder="Service for Customer"
+          ></TextInput>
           <TextInput placeholder="Price"></TextInput>
           <TextInput placeholder="Description"></TextInput>
           <FileUpload></FileUpload>
-          <button className="w-full px-4 py-2 text-2xl font-bold text-white bg-black rounded-full">
+          <button className="w-full px-4 py-2 text-2xl font-bold text-white bg-purple-600 rounded-full hover:bg-purple-500">
             Add New Product
           </button>
         </div>

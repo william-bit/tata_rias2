@@ -5,7 +5,7 @@ import { useStore } from "../../store/store";
 const Index = () => {
   let listMenu = [
     { label: "Dashboard" },
-    { label: "Product", href: "/admin/product" },
+    { label: "Service", href: "/admin/product" },
     { label: "Report" },
   ];
   const loginToast = useStore((state) => state.loginToast);
@@ -18,7 +18,7 @@ const Index = () => {
     <>
       <ToastContainer />
       <div className="flex flex-row h-screen">
-        <div className="bg-gray-700 w-50">
+        <div className="w-1/12 bg-purple-500">
           <Sidebar listMenu={listMenu}></Sidebar>
         </div>
         <div className="flex flex-col flex-1">
