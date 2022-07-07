@@ -1,22 +1,57 @@
-import salon from "../../../assets/images/salon.jpg";
-interface Card {
+import { ShoppingCartIcon } from "@heroicons/react/outline";
+import { ReactNode } from "react";
+import { useStore } from "../../store/store";
+import { formatNumber } from "../../utils/helper";
+import { Link } from "../Links";
+
+interface ICard {
   title: string;
   description: string;
   detail: string;
+  src: string;
+  price: string;
+  id: number;
 }
-const Card = ({ title, description, detail }: Card) => {
+const Guard = ({ children, id }: { children: ReactNode; id: number }) => {
+  const userProfile = useStore((state) => state.userProfile);
+  return !userProfile.name ? (
+    <>
+      <Link
+        href="/auth"
+        className="flex items-center justify-center w-10 h-10 p-2 mb-4 text-white bg-black border border-gray-700 mx-7 hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+      >
+        {children}
+      </Link>
+    </>
+  ) : (
+    <Link
+      href={`/checkout/${id}`}
+      className="flex items-center justify-center w-10 h-10 p-2 mb-4 text-white bg-black border border-gray-700 mx-7 hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+    >
+      {children}
+    </Link>
+  );
+};
+const Card = ({ id, title, description, detail, src, price }: ICard) => {
   return (
-    <div className="flex flex-row-reverse w-full p-2 my-2 border-2 border-gray-300 rounded-md shrink-0 h-44">
+    <div className="relative flex flex-row-reverse w-full p-2 my-2 overflow-hidden border-2 border-gray-300 rounded-md h-36 clip shrink-0">
       <img
-        src={salon}
+        src={src}
         alt="Picture of the author"
-        width="350px"
-        height="300px"
+        className="w-1/2 rounded-md h-2/3"
       />
-      <div className="mx-3 text-left">
+      <div className="w-full mx-3 text-left">
         <div>{title}</div>
         <div className="text-xs text-blue-500">{description}</div>
         <div className="text-xs text-justify">{detail}</div>
+        <div className="text-xs text-justify">
+          Rp.{formatNumber(parseInt(price))}
+        </div>
+      </div>
+      <div className="absolute flex items-end justify-start w-full h-full">
+        <Guard id={id}>
+          <ShoppingCartIcon className="h-5" />
+        </Guard>
       </div>
     </div>
   );

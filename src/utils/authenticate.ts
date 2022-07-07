@@ -1,37 +1,40 @@
+import { IProfile, useStore } from "./../store/store";
 import axios from "axios";
 import { Url } from "./constanst";
 
-const setToken = () => {
-  return new Promise((resolve) => {
-    axios.get(Url.token).then((response) => {
-      window.localStorage.setItem(
-        "Authorization",
-        `Bearer ${response.data.content.access_token}`
-      );
-      axios.defaults.withCredentials = true;
-      axios.defaults.headers.common["Authorization"] =
-        window.localStorage.getItem("Authorization") as string;
-      resolve(true);
-    });
-  });
+export const setAuthToken = (token: string) => {
+  window.localStorage.setItem("Authorization", `Bearer ${token}`);
+  axios.defaults.headers.common["Authorization"] = window.localStorage.getItem(
+    "Authorization"
+  ) as string;
 };
-
 export const checkGetToken = () => {
+  console.log("check user");
   return new Promise(async (resolve) => {
-    if (!!axios.defaults.headers.common["Authorization"]) {
+    if (!axios.defaults.headers.common["Authorization"]) {
       if (window.localStorage.getItem("Authorization")) {
         axios.defaults.withCredentials = true;
         axios.defaults.headers.common["Authorization"] =
           window.localStorage.getItem("Authorization") as string;
         resolve(true);
       } else {
-        await setToken();
         resolve(true);
       }
     } else {
       resolve(true);
     }
   });
+};
+
+let checkUser: number;
+export const checkToken = (setUserEmpty: (profile: IProfile) => void) => {
+  clearInterval(checkUser);
+  checkUser = setInterval(function () {
+    axios.get(Url.user).catch(() => {
+      clearInterval(checkUser);
+      setUserEmpty({} as IProfile);
+    });
+  }, 5 * 1000);
 };
 
 export interface IRegisterParam {

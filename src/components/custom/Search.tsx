@@ -1,11 +1,16 @@
 import React from "react";
 
-export const Search = () => {
+export const Search = ({
+  searchHandle,
+}: {
+  searchHandle: (value: string) => void;
+}) => {
   return (
     <div className="flex">
       <div className="w-full">
         <div className="relative flex flex-row items-stretch w-full h-8 input-group">
           <input
+            onChange={(event) => searchHandle(event.target.value)}
             type="search"
             className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             placeholder="Search"

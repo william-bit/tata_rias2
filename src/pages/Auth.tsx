@@ -1,9 +1,11 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ILoginParam, login } from "../utils/authenticate";
+import { Link } from "../components/Links";
+import { useStore } from "../store/store";
+import { ILoginParam, login, setAuthToken } from "../utils/authenticate";
 
 export interface ILaravelApiErrorReturn {
   message?: string;
@@ -13,7 +15,10 @@ export interface ILaravelApiErrorReturn {
   };
 }
 const Auth = () => {
-  const [form, setForm] = useState<ILoginParam>({});
+  const [form, setForm] = useState<ILoginParam>({
+    email: "",
+    password: "",
+  });
   const handleChange = (
     label: string,
     e: React.ChangeEvent<HTMLInputElement>
@@ -23,21 +28,30 @@ const Auth = () => {
 
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
 
+  const setUserProfile = useStore((state) => state.setUserProfile);
+
   const navigate = useNavigate();
   const { isLoading: isPosting, mutate: loginPost } = useMutation(
     async () => {
       return login(form);
     },
     {
-      onSuccess: (res) => {
+      onSuccess: (res: AxiosResponse) => {
         const result = {
           status: res.status + "-" + res.statusText,
           headers: res.headers,
           data: res.data,
         };
+        setUserProfile({
+          email: res.data.content.user_email,
+          name: res.data.content.user_name,
+          role: res.data.content.role,
+          join: new Date(res.data.content.user_join),
+        });
+        setAuthToken(res.data.content.access_token);
         setFormError({});
         if (res.data.content.role == 1) {
-          navigate("/admin");
+          navigate("/admin/product");
         } else {
           navigate("/");
         }
@@ -67,7 +81,7 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-8">
         <div>
           <div className="w-auto h-12 mx-auto text-5xl font-extrabold text-center ">
-            Skripsi Kost
+            Tata Rias
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
             Sign in to your account
@@ -165,6 +179,15 @@ const Auth = () => {
               </span>
               Sign in
             </button>
+            <div className="mt-2 text-sm text-center">
+              <span className="mr-2"> Don't have a account?</span>
+              <Link
+                href="/register"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+              >
+                Create new account
+              </Link>
+            </div>
           </div>
         </form>
       </div>

@@ -18,10 +18,22 @@ let filter: IFilter = {};
 export const setFilterProduct = (filterParam: IFilter) => {
   filter = filterParam;
 };
-export const getListProduct = (search: string) => {
-  return axios.post(Url.register + "/" + search, filter);
+
+export const getDetailProduct = (id: string | undefined) => {
+  return axios.get(Url.detailProduct + "/" + id);
 };
 
-export const getDetailProduct = (id: number) => {
-  return axios.post(Url.register + "/" + id);
+export const getListShop = (search: string) => {
+  return axios.get(Url.home + "?search=" + search);
+};
+
+export const getListTransaction = (currentPage: number) => {
+  return axios.get(Url.transaction + "?page=" + currentPage); // credentials didn't match
+};
+export const getListTransactionVendor = (currentPage: number) => {
+  return axios.get(Url.transactionVendor + "?page=" + currentPage); // credentials didn't match
+};
+
+export const getListProduct = (currentPage: number) => {
+  return axios.get(Url.listProduct + "?page=" + currentPage); // credentials didn't match
 };

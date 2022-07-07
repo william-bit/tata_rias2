@@ -1,13 +1,30 @@
+import { AxiosResponse } from "axios";
+import { ReactNode } from "react";
+import { useStore } from "../../store/store";
 import Card from "../custom/Card";
+import { Link } from "../Links";
 
-const ListView = () => {
+interface IListView {
+  data: AxiosResponse<any, any> | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  isFetching: boolean;
+  error: Error | unknown;
+}
+
+const ListView = (props: IListView) => {
   return (
-    <div className="flex flex-wrap">
-      <Card
-        title="Salan Risa"
-        description="Jl Cimone raya no 4"
-        detail="Set in La Teste-de-Buch, Domaine de la Forge offers a garden and a seasonal outdoor pool. There is a water park on site and guests can enjoy the on-site bar. Bordeaux is 38 mi from the property."
-      ></Card>
+    <div className="grid grid-cols-2 gap-1 p-3 mt-1">
+      {props.data?.data.map((row: any, index: number) => (
+        <Card
+          id={row.id}
+          src={row.photo}
+          title={row.name}
+          price={row.price}
+          description={row.location}
+          detail={row.description}
+        ></Card>
+      ))}
     </div>
   );
 };

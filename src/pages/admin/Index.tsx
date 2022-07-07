@@ -1,34 +1,9 @@
-import { ToastContainer, toast } from "react-toastify";
-import Sidebar from "../../components/layouts/Sidebar";
-import Header from "../../components/layouts/Header";
-import { useStore } from "../../store/store";
+import Admin from "../../components/layouts/Admin";
 const Index = () => {
-  let listMenu = [
-    { label: "Dashboard" },
-    { label: "Service", href: "/admin/product" },
-    { label: "Report" },
-  ];
-  const loginToast = useStore((state) => state.loginToast);
-  const toggleLoginToast = useStore((state) => state.toggleLoginToast);
-  if (loginToast) {
-    toast("Success login!!!");
-    toggleLoginToast();
-  }
   return (
-    <>
-      <ToastContainer />
-      <div className="flex flex-row h-screen">
-        <div className="w-1/12 bg-purple-500">
-          <Sidebar listMenu={listMenu}></Sidebar>
-        </div>
-        <div className="flex flex-col flex-1">
-          <div className="flex items-center h-10">
-            <Header listMenu={listMenu}></Header>
-          </div>
-          <div className="flex-1 overflow-scroll bg-slate-100">Welcome</div>
-        </div>
-      </div>
-    </>
+    <Admin>
+      <div className="flex-1 bg-slate-100">Welcome</div>
+    </Admin>
   );
 };
 
