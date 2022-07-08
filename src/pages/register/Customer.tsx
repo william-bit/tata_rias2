@@ -28,7 +28,7 @@ const Customer = () => {
     password_confirmation: "",
     password: "",
     email: "",
-    type: 1,
+    type: 0,
   });
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
 
