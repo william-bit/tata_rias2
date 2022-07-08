@@ -169,7 +169,7 @@ const InputForm = ({
       <div className="w-full ">
         <form className="px-5 py-3" onSubmit={handleSubmit(onSubmit)}>
           <TextInput
-            label="Room"
+            label="Tata Rias add product"
             name="name"
             type="text"
             placeholder="Room for Customer"
