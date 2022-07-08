@@ -172,7 +172,7 @@ const InputForm = ({
             label="Tata Rias add product"
             name="name"
             type="text"
-            placeholder="Product for TataRias"
+            placeholder="Product Name"
             register={register}
           ></TextInput>
           <TextInput
