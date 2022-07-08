@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { register, IRegisterParam } from "../../utils/authenticate";
+import { useStore } from "../../store/store";
+import {
+  register,
+  IRegisterParam,
+  setAuthToken,
+} from "../../utils/authenticate";
 
 export interface ILaravelApiErrorReturn {
   message?: string;
@@ -23,7 +28,7 @@ const Customer = () => {
     password_confirmation: "",
     password: "",
     email: "",
-    type: 0,
+    type: 1,
   });
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
 
@@ -36,6 +41,8 @@ const Customer = () => {
 
   const navigate = useNavigate();
 
+  const setUserProfile = useStore((state) => state.setUserProfile);
+
   const { isLoading: isPosting, mutate: registerPost } = useMutation(
     async () => {
       return register(form);
@@ -47,8 +54,16 @@ const Customer = () => {
           headers: res.headers,
           data: res.data,
         };
+        console.log(result);
+        setUserProfile({
+          email: res.data.content.user_email,
+          name: res.data.content.user_name,
+          role: res.data.content.role,
+          join: new Date(res.data.content.user_join),
+        });
+        setAuthToken(res.data.content.access_token);
         setFormError({});
-        navigate("/");
+        navigate("/admin/product");
         console.log(res.data);
       },
       onError: (err: AxiosError) => {
@@ -76,7 +91,7 @@ const Customer = () => {
       className="flex flex-col min-h-screen bg-grey-lighter"
       style={{
         backgroundColor: "#ffffff",
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23bbb9be' fill-opacity='0.58'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fillRule='evenodd'%3E%3Cg id='autumn' fill='%23bbb9be' fill-opacity='0.58'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
       }}
     >
       <div className="container flex flex-col items-center justify-center flex-1 max-w-sm px-2 mx-auto">
@@ -143,7 +158,7 @@ const Customer = () => {
 
             <button
               type="submit"
-              className="w-full py-3 my-1 mt-4 text-center text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none"
+              className="w-full py-3 my-1 mt-4 text-center text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
             >
               Create Account
             </button>
