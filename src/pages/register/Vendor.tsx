@@ -23,7 +23,7 @@ const VendorRegister = () => {
     password_confirmation: "",
     password: "",
     email: "",
-    type: 0,
+    type: 1,
   });
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
 
