@@ -41,8 +41,8 @@ const Product = () => {
           isLoading={isLoading}
           isError={isError}
           isFetching={isFetching}
-          subTitle="List Room"
-          title="Room"
+          subTitle="List Product"
+          title="Tata Rias Product"
           handleChange={handleChange}
         ></TableCustom>
       </div>
