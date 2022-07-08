@@ -164,7 +164,7 @@ const InputForm = ({
   return (
     <div className="border-2 shadow-md ">
       <div className="w-full py-2 text-2xl font-bold text-center text-black">
-        Add New Room
+        Add New Product
       </div>
       <div className="w-full ">
         <form className="px-5 py-3" onSubmit={handleSubmit(onSubmit)}>
