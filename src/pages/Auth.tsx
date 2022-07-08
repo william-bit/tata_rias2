@@ -81,7 +81,7 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-8">
         <div>
           <div className="w-auto h-12 mx-auto text-5xl font-extrabold text-center ">
-            Yuksss Tata Rias ✨
+            Yuksss Tata Rias
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
             Sign in to your account
