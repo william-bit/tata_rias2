@@ -11,7 +11,7 @@ import Sort from "./Sort";
 const List = () => {
   let { searchHome } = useParams();
   console.log(searchHome);
-  const [search, setSearch] = useState(searchHome);
+  const [search, setSearch] = useState(searchHome ? searchHome : "");
 
   const { data, error, isError, isLoading, isFetching, refetch } = useQuery(
     ["home", search],
