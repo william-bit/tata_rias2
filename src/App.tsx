@@ -44,6 +44,7 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/vendor" element={<Vendor />} />
+        <Route path="/vendor/:searchHome" element={<Vendor />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register/vendor" element={<VendorRegister />} />
         <Route path="/register/customer" element={<Customer />} />

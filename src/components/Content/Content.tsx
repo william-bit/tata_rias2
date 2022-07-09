@@ -1,3 +1,29 @@
+import { ReactNode } from "react";
+import { useStore } from "../../store/store";
+import { Link } from "../Links";
+
+const Guard = ({
+  children,
+  search,
+  className,
+}: {
+  children: ReactNode;
+  search: string;
+  className: string;
+}) => {
+  const userProfile = useStore((state) => state.userProfile);
+  return !userProfile.name ? (
+    <>
+      <Link href="/auth" className={className}>
+        {children}
+      </Link>
+    </>
+  ) : (
+    <Link href={`/vendor/${search}`} className={className}>
+      {children}
+    </Link>
+  );
+};
 interface Card {
   title: string;
   description: string;
@@ -6,20 +32,25 @@ interface Card {
 }
 const Card = ({ title, description, detail, href }: Card) => {
   return (
-    <div className="flex w-4/12 h-full p-2 mx-8 my-2 border-2 border-gray-300 rounded-md shrink-0">
-      <img
-        className="w-24 h-24 rounded-lg"
-        src={href}
-        alt="Picture of the author"
-        width="350px"
-        height="300px"
-      />
-      <div className="ml-3">
-        <div>{title}</div>
-        <div className="text-xs text-blue-500">{description}</div>
-        <div className="text-xs">{detail}</div>
-      </div>
-    </div>
+    <>
+      <Guard
+        search={title}
+        className="flex w-4/12 h-full p-2 mx-8 my-2 border-2 border-gray-300 rounded-md shrink-0"
+      >
+        <img
+          className="w-24 h-24 rounded-lg"
+          src={href}
+          alt="Picture of the author"
+          width="350px"
+          height="300px"
+        />
+        <div className="ml-3">
+          <div>{title}</div>
+          <div className="text-xs text-blue-500">{description}</div>
+          <div className="text-xs">{detail}</div>
+        </div>
+      </Guard>
+    </>
   );
 };
 

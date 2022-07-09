@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { getListShop } from "../../utils/data";
 import { Search } from "../custom/Search";
 import CheckInView from "./CheckInView";
@@ -8,7 +9,9 @@ import Location from "./Location";
 import Sort from "./Sort";
 
 const List = () => {
-  const [search, setSearch] = useState("");
+  let { searchHome } = useParams();
+  console.log(searchHome);
+  const [search, setSearch] = useState(searchHome);
 
   const { data, error, isError, isLoading, isFetching, refetch } = useQuery(
     ["home", search],
@@ -30,7 +33,7 @@ const List = () => {
           <div className="flex flex-col w-full ml-10">
             <div className="flex justify-center">
               <div className="w-full px-2">
-                <Search searchHandle={searchHandle}></Search>
+                <Search search={search} searchHandle={searchHandle}></Search>
               </div>
             </div>
             <div>

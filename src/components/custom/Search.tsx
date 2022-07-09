@@ -1,9 +1,12 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 export const Search = ({
   searchHandle,
+  search,
 }: {
   searchHandle: (value: string) => void;
+  search: string | undefined;
 }) => {
   return (
     <div className="flex">
@@ -12,6 +15,7 @@ export const Search = ({
           <input
             onChange={(event) => searchHandle(event.target.value)}
             type="search"
+            value={search}
             className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             placeholder="Search"
             aria-label="Search"

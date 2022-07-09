@@ -23,7 +23,7 @@ export const getDetailProduct = (id: string | undefined) => {
   return axios.get(Url.detailProduct + "/" + id);
 };
 
-export const getListShop = (search: string) => {
+export const getListShop = (search: string | undefined) => {
   return axios.get(Url.home + "?search=" + search);
 };
 
