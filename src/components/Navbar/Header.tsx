@@ -24,6 +24,13 @@ export const Header = () => {
             </Link>
           </>
         )}
+        {userProfile.role === 1 && (
+          <>
+            <Link href="/admin">
+              <div className="cursor-pointer">Vendor panel</div>
+            </Link>
+          </>
+        )}
         {!userProfile.name && (
           <Link href="/auth">
             <div className="px-4 py-1 text-sm text-white bg-green-500 rounded-md cursor-pointer hover:bg-green-400">

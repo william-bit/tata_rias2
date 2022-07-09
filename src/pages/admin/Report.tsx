@@ -3,18 +3,19 @@ import { useQuery } from "react-query";
 import InputForm from "../../components/custom/InputForm";
 import { TableCustom } from "../../components/custom/Table";
 import Admin from "../../components/layouts/Admin";
-import { getListProduct } from "../../utils/data";
+import { getListTransactionVendor } from "../../utils/data";
 const Report = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, error, isError, isLoading, isFetching, refetch } = useQuery(
     ["trans", currentPage],
-    () => getListProduct(currentPage),
+    () => getListTransactionVendor(currentPage),
     { keepPreviousData: true }
   );
   const config: Array<{ title: string; key: string; type?: string }> = [
-    { title: "Photo", key: "photo", type: "image" },
-    { title: "Name Customer", key: "name" },
+    { title: "Photo Product", key: "photo", type: "image" },
+    { title: "Photo Payment", key: "photoPayment", type: "image" },
+    { title: "Name Customer", key: "custName" },
     { title: "Total", key: "price" },
     { title: "Unit", key: "unit" },
     { title: "Status", key: "status", type: "status" },
@@ -38,6 +39,7 @@ const Report = () => {
           subTitle="List Transaction"
           title="Trans"
           handleChange={handleChange}
+          handleCustom={(id, action) => console.log(id, action)}
         ></TableCustom>
       </div>
     </Admin>

@@ -17,6 +17,7 @@ interface ISidebar {
 
 export default function Sidebar({ listMenu }: ISidebar) {
   const setUserProfile = useStore((state) => state.setUserProfile);
+  const userProfile = useStore((state) => state.userProfile);
   const navigate = useNavigate();
   const handleLogout = () => {
     console.log("hai");
@@ -25,10 +26,11 @@ export default function Sidebar({ listMenu }: ISidebar) {
   };
   return (
     <div className="flex flex-col">
-      <div className="flex items-center justify-center h-10 w-36 justify-items-center">
+      <div className="flex flex-col items-center justify-center h-10 my-2 w-36 justify-items-center">
         <Link href="/">
-          <span className="text-white">Yuksss Tata Rias ✨</span>
+          <div className="text-white">Yuksss Tata Rias ✨</div>
         </Link>
+        <div className="text-white">Welcome {userProfile.name}</div>
       </div>
       {listMenu.map((item: object, i: number) => (
         <div key={i}>{Menu(item)}</div>

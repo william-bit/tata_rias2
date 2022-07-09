@@ -29,3 +29,18 @@ export const storeCheckout = (formData: FormData) => {
     },
   });
 };
+
+export interface IProfilePicParam {
+  name: string;
+  price: string;
+  image: string;
+  description: string;
+  location: string;
+}
+export const storeProfilePicVendor = (formData: FormData) => {
+  return axios.post(Url.storeProfilePicVendor, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};

@@ -21,7 +21,7 @@ const Admin = (props: IAdmin) => {
           <Sidebar listMenu={listMenu}></Sidebar>
         </div>
         <div className="flex flex-col w-full h-screen overflow-hidden">
-          <div className="flex items-center flex-none h-10">
+          <div className="flex items-center flex-none h-14">
             <Header listMenu={listMenu}></Header>
           </div>
           <div className="flex flex-initial overflow-hidden">

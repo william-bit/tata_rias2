@@ -17,6 +17,7 @@ import { useStore } from "./store/store";
 import axios from "axios";
 import Report from "./pages/admin/Report";
 import { Transaction } from "./pages/Transaction";
+import { AdminProfile } from "./pages/admin/Profile";
 
 function App() {
   checkGetToken();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/product" element={<Product />} />
+        <Route path="/admin/profile" element={<AdminProfile />} />
       </Routes>
     </>
   );
