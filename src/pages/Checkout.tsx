@@ -9,6 +9,7 @@ import {
 import { useMutation, useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Header } from "../components/Navbar/Header";
 import { getDetailProduct } from "../utils/data";
 import { formatNumber } from "../utils/helper";
 import { ICheckoutParam, storeCheckout } from "../utils/postData";
@@ -164,6 +165,7 @@ export const Checkout = () => {
   console.log(data);
   return (
     <div>
+      <Header></Header>
       <div className="mt-20">
         <h1 className="flex items-center justify-center font-bold text-blue-600 text-md lg:text-3xl">
           Checkout Page
