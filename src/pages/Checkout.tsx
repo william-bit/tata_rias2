@@ -250,6 +250,12 @@ export const Checkout = () => {
                           {...register("appointment")}
                         ></input>
                       </div>
+                      <div className="flex items-center mt-2">
+                        <select className="w-full border border-gray-500 rounded h-7">
+                          <option>On Site</option>
+                          <option>To Destination</option>
+                        </select>
+                      </div>
                     </div>
                     <div>
                       <button
