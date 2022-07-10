@@ -19,6 +19,7 @@ import Report from "./pages/admin/Report";
 import { Transaction } from "./pages/Transaction";
 import { AdminProfile } from "./pages/admin/Profile";
 import Index from "./pages/admin/Index";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   checkGetToken();
@@ -37,8 +38,6 @@ function App() {
         <Route path="/checkout/:productId" element={<Checkout />} />
         <Route path="/requests" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/admin/report" element={<Report />} />
-        <Route path="/admin/product" element={<Product />} />
         <Route path="/transaction" element={<Transaction />} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -50,11 +49,19 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/register/vendor" element={<VendorRegister />} />
         <Route path="/register/customer" element={<Customer />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/admin/product" element={<Product />} />
-        <Route path="/admin/profile" element={<AdminProfile />} />
+        {userProfile.role == 1 ? (
+          <>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/product" element={<Product />} />
+            <Route path="/admin/profile" element={<AdminProfile />} />
+            <Route path="/admin/report" element={<Report />} />
+            <Route path="/admin/product" element={<Product />} />
+          </>
+        ) : (
+          <Route path="/admin/*" element={<NotFound />} />
+        )}
       </Routes>
     </>
   );
