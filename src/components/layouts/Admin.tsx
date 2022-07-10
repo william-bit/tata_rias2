@@ -7,6 +7,7 @@ interface IAdmin {
   children: JSX.Element | JSX.Element[];
 }
 const Admin = (props: IAdmin) => {
+    const userProfile = useStore((state) => state.userProfile);
   const loginToast = useStore((state) => state.loginToast);
   const toggleLoginToast = useStore((state) => state.toggleLoginToast);
   if (loginToast) {

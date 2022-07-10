@@ -63,7 +63,7 @@ const Customer = () => {
         });
         setAuthToken(res.data.content.access_token);
         setFormError({});
-        navigate("/admin/product");
+        navigate("/");
         console.log(res.data);
       },
       onError: (err: AxiosError) => {
