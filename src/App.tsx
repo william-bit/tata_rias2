@@ -18,6 +18,7 @@ import axios from "axios";
 import Report from "./pages/admin/Report";
 import { Transaction } from "./pages/Transaction";
 import { AdminProfile } from "./pages/admin/Profile";
+import Index from "./pages/admin/Index";
 
 function App() {
   checkGetToken();
