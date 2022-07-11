@@ -20,6 +20,7 @@ import { Transaction } from "./pages/Transaction";
 import { AdminProfile } from "./pages/admin/Profile";
 import Index from "./pages/admin/Index";
 import { NotFound } from "./pages/NotFound";
+import { Invoice } from "./pages/invoice/Invoice";
 
 function App() {
   checkGetToken();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/vendor" element={<Vendor />} />
         <Route path="/vendor/:searchHome" element={<Vendor />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/invoice/:id" element={<Invoice />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register/vendor" element={<VendorRegister />} />
         <Route path="/register/customer" element={<Customer />} />

@@ -27,6 +27,10 @@ export const getListShop = (search: string | undefined) => {
   return axios.get(Url.home + "?search=" + search);
 };
 
+export const getDetailTransaction = (id: string | undefined) => {
+  return axios.get(Url.invoice + "/" + id);
+};
+
 export const getListTransaction = (currentPage: number) => {
   return axios.get(Url.transaction + "?page=" + currentPage); // credentials didn't match
 };

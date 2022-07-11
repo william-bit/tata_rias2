@@ -7,6 +7,7 @@ export class Url {
   public static readonly listProduct = this.baseUrl + "/product";
   public static readonly shop = this.baseUrl + "/shop";
   public static readonly home = this.baseUrl + "/home";
+  public static readonly invoice = this.baseUrl + "/order/detail";
   public static readonly transaction = this.baseUrl + "/transaction/get";
   public static readonly transactionVendor =
     this.baseUrl + "/transaction/get-vendor";

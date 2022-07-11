@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { TableCustom } from "../components/custom/table/Table";
 import SidebarProfile from "../components/layouts/SidebarProfile";
 import { Header } from "../components/Navbar/Header";
@@ -34,6 +35,7 @@ export const Transaction = () => {
   const handleChange = (value: number) => {
     setCurrentPage(value);
   };
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -52,6 +54,7 @@ export const Transaction = () => {
             subTitle="List Transaction"
             title="Transaction"
             handleChange={handleChange}
+            handleCustom={(id, action) => navigate(`/invoice/${id}`)}
           ></TableCustom>
         </div>
       </div>
