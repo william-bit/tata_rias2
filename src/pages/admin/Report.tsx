@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import InputForm from "../../components/custom/InputForm";
-import { TableCustom } from "../../components/custom/Table";
+import InputForm from "../../components/custom/input/InputForm";
+import { TableCustom } from "../../components/custom/table/Table";
 import Admin from "../../components/layouts/Admin";
 import { getListTransactionVendor } from "../../utils/data";
 const Report = () => {

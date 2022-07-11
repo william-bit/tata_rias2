@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { TableCustom } from "../components/custom/Table";
+import { TableCustom } from "../components/custom/table/Table";
 import SidebarProfile from "../components/layouts/SidebarProfile";
 import { Header } from "../components/Navbar/Header";
 import { useStore } from "../store/store";

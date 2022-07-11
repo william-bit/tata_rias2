@@ -2,6 +2,7 @@ import axios from "axios";
 import { Url } from "./constanst";
 
 export interface IProductParam {
+  id: string;
   name: string;
   price: string;
   image: string;
@@ -10,6 +11,13 @@ export interface IProductParam {
 }
 export const storeProduct = (formData: FormData) => {
   return axios.post(Url.storeProduct, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+export const updateProduct = (formData: FormData) => {
+  return axios.post(Url.storeProduct + "/" + formData.get("id"), formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
