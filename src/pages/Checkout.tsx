@@ -161,7 +161,6 @@ export const Checkout = () => {
     console.log(dataForm);
   };
 
-  const tax = (day * data?.data.price * 11) / 100;
   console.log(data);
   return (
     <div>
@@ -287,13 +286,9 @@ export const Checkout = () => {
                 <h2 className="text-xl font-bold">ITEMS</h2>
               </div>
               <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                Tax
-                <span className="ml-2">Rp.{formatNumber(tax)}</span>
-              </div>
-              <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                 Total
                 <span className="ml-2">
-                  Rp.{formatNumber(day * data?.data.price + tax)}
+                  Rp.{formatNumber(day * data?.data.price)}
                 </span>
               </div>
             </div>

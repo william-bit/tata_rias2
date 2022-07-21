@@ -18,7 +18,7 @@ const Guard = ({ children, id }: { children: ReactNode; id: number }) => {
     <>
       <Link
         href="/auth"
-        className="flex items-center justify-center w-10 h-10 p-2 mb-4 text-white bg-black border border-gray-700 mx-7 hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+        className="flex items-center justify-center w-10 h-10 p-2 mt-1 mb-4 text-white bg-black border border-gray-700 hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
       >
         {children}
       </Link>
@@ -26,7 +26,7 @@ const Guard = ({ children, id }: { children: ReactNode; id: number }) => {
   ) : (
     <Link
       href={`/detail/${id}`}
-      className="flex items-center justify-center w-10 h-10 p-2 mb-4 text-white bg-black border border-gray-700 mx-7 hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
+      className="flex items-center justify-center w-10 h-10 p-2 mt-1 mb-4 text-white bg-black border border-gray-700 hover:bg-gray-500 focus:outline-none focus:bg-gray-500"
     >
       {children}
     </Link>
@@ -48,7 +48,7 @@ const Card = ({ id, title, description, detail, src, price }: ICard) => {
           Rp.{formatNumber(parseInt(price))}
         </div>
       </div>
-      <div className="absolute flex items-end justify-start w-full h-full">
+      <div className="absolute flex items-end justify-end w-full h-full">
         <Guard id={id}>
           <ShoppingCartIcon className="h-5" />
         </Guard>
