@@ -243,7 +243,7 @@ export const Checkout = () => {
                       <p className="text-sm">{data?.data.description}</p>
                       <span className="text-red-600">Price</span>
                       <div>Rp.{formatNumber(parseInt(data?.data.price))}</div>
-                      <div className="font-bold">
+                      <div className="text-xs font-bold text-red-600">
                         Min 3 hour before appointment
                       </div>
                       <div className="flex items-center mt-2">
