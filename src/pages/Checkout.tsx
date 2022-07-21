@@ -246,6 +246,17 @@ export const Checkout = () => {
                       <div className="flex items-center mt-2">
                         <input
                           type={"datetime-local"}
+                          min={
+                            new Date().getFullYear() +
+                            "-" +
+                            (new Date().getMonth() + 1).toLocaleString(
+                              "en-US",
+                              { minimumIntegerDigits: 2, useGrouping: false }
+                            ) +
+                            "-" +
+                            new Date().getDate() +
+                            "T00:00:00"
+                          }
                           className="border border-gray-500 rounded"
                           required
                           {...register("appointment")}
