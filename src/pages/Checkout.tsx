@@ -243,6 +243,9 @@ export const Checkout = () => {
                       <p className="text-sm">{data?.data.description}</p>
                       <span className="text-red-600">Price</span>
                       <div>Rp.{formatNumber(parseInt(data?.data.price))}</div>
+                      <div className="font-bold">
+                        Min 3 hour before appointment
+                      </div>
                       <div className="flex items-center mt-2">
                         <input
                           type={"datetime-local"}
@@ -255,7 +258,7 @@ export const Checkout = () => {
                             ) +
                             "-" +
                             new Date().getDate() +
-                            "T00:00:00"
+                            "T23:59:59"
                           }
                           className="border border-gray-500 rounded"
                           required
