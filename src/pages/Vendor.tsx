@@ -8,7 +8,6 @@ const Vendor = () => {
       className="flex flex-col "
       style={{
         background: `url('${background}')`,
-        backgroundColor: "rgba(255,255,255,0.9)",
         backgroundBlendMode: "darken",
         backgroundSize: "contain",
       }}

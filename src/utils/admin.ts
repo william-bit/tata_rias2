@@ -4,5 +4,5 @@ interface IListMenu {
 }
 export const listMenu: Array<IListMenu> = [
   { label: "Product", href: "/admin/product" },
-  { label: "Report", href: "/admin/report" },
+  { label: "Incoming Order", href: "/admin/report" },
 ];
