@@ -34,7 +34,7 @@ const Guard = ({ children, id }: { children: ReactNode; id: number }) => {
 };
 const Card = ({ id, title, description, detail, src, price }: ICard) => {
   return (
-    <div className="relative flex flex-row-reverse w-full p-2 my-2 overflow-hidden border-2 border-gray-300 rounded-md h-36 clip shrink-0">
+    <div className="relative flex flex-row-reverse w-full p-2 my-2 overflow-hidden bg-white border-2 border-gray-300 rounded-md h-36 clip shrink-0">
       <img
         src={src}
         alt="Picture of the author"
