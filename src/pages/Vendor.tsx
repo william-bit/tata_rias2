@@ -1,6 +1,6 @@
 import List from "../components/List/List";
 import { Header } from "../components/Navbar/Header";
-import background from "../../assets/images/BackgroundVendor.jpeg";
+import background from "../../assets/images/BackgroundVendor.jpg";
 
 const Vendor = () => {
   return (
@@ -10,7 +10,7 @@ const Vendor = () => {
         background: `url('${background}')`,
         backgroundColor: "rgba(255,255,255,0.9)",
         backgroundBlendMode: "darken",
-        backgroundSize: "cover",
+        backgroundSize: "contain",
       }}
     >
       <Header></Header>
