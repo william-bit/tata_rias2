@@ -3,7 +3,6 @@ import About from "./pages/About";
 import Auth from "./pages/Auth";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
-import Register from "./pages/register/Index";
 import Admin from "./pages/admin/Index";
 import Product from "./pages/admin/Product";
 import Vendor from "./pages/Vendor";
@@ -21,6 +20,7 @@ import { AdminProfile } from "./pages/admin/Profile";
 import Index from "./pages/admin/Index";
 import { NotFound } from "./pages/NotFound";
 import { Invoice } from "./pages/invoice/Invoice";
+import Register from "./pages/register/Register";
 
 function App() {
   checkGetToken();
@@ -49,8 +49,6 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/invoice/:id" element={<Invoice />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register/vendor" element={<VendorRegister />} />
-        <Route path="/register/customer" element={<Customer />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/checkout" element={<Checkout />} />
         {userProfile.role == 1 ? (

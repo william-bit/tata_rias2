@@ -3,6 +3,7 @@ import { Link } from "../Links";
 
 export const Header = () => {
   const userProfile = useStore((state) => state.userProfile);
+  console.log("tet", userProfile);
   return (
     <div className="sticky top-0 flex justify-between w-full px-8 py-4 text-black bg-white border">
       <Link href="/">
@@ -14,7 +15,7 @@ export const Header = () => {
         <Link href="/">
           <div className="cursor-pointer">Home</div>
         </Link>
-        {userProfile.role === 0 && (
+        {userProfile.role == 0 && (
           <>
             <Link href="/vendor">
               <div className="cursor-pointer">Vendor</div>
@@ -24,7 +25,7 @@ export const Header = () => {
             </Link>
           </>
         )}
-        {userProfile.role === 1 && (
+        {userProfile.role == 1 && (
           <>
             <Link href="/admin">
               <div className="cursor-pointer">Vendor panel</div>
