@@ -176,6 +176,7 @@ const Register = () => {
                 onChange={(event) => handleChange("type", event)}
                 className="block w-full p-3 mt-4 border rounded border-grey-light"
               >
+                <option>Role As</option>
                 <option value={1}>Tata Rias</option>
                 <option value={0}>Customer</option>
               </select>
