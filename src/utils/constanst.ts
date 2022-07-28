@@ -5,6 +5,7 @@ export class Url {
   public static readonly token = "http://127.0.0.1:8000/sanctum/csrf-cookie";
   public static readonly register = this.baseUrl + "/register";
   public static readonly listProduct = this.baseUrl + "/product";
+  public static readonly picture = this.baseUrl + "/user/picture";
   public static readonly listRequest = this.baseUrl + "/request";
   public static readonly listProductVendor = this.baseUrl + "/product-vendor";
   public static readonly shop = this.baseUrl + "/shop";

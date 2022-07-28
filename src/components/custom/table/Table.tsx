@@ -106,8 +106,9 @@ export const TableCustom = (props: ITableCustom) => {
                           isDelete={props.isDelete}
                           config={props.config}
                           customAction={
-                            props.handleCustom &&
-                            props.data?.data.table.customAction
+                            props.handleCustom
+                              ? props.data?.data?.table?.customAction
+                              : undefined
                           }
                           handleCustomAction={props.handleCustom}
                           key={index}

@@ -4,6 +4,7 @@ import Header from "../../components/layouts/Header";
 import { useStore } from "../../store/store";
 import { listMenu } from "../../utils/admin";
 import { useNavigate } from "react-router-dom";
+import { usePictureProfile } from "../../hooks/usePictureProfile";
 interface IAdmin {
   children: JSX.Element | JSX.Element[];
 }

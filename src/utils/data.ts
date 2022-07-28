@@ -41,3 +41,6 @@ export const getListTransactionVendor = (currentPage: number) => {
 export const getListProduct = (currentPage: number) => {
   return axios.get(Url.listProduct + "?page=" + currentPage); // credentials didn't match
 };
+export const getUserPicture = () => {
+  return axios.get(Url.picture); // credentials didn't match
+};

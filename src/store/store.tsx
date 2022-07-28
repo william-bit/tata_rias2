@@ -13,6 +13,8 @@ interface BearState {
   toggleLogin: () => void;
   userProfile: IProfile;
   setUserProfile: (profile: IProfile) => void;
+  pictureProfile: string;
+  setPictureProfile: (profile: string) => void;
   loginToast: boolean;
   toggleLoginToast: () => void;
 }
@@ -24,6 +26,8 @@ export const useStore = create<BearState>()(
       toggleLogin: () => set((state) => ({ login: !state.login })),
       userProfile: {} as IProfile,
       setUserProfile: (profile) => set({ userProfile: profile }),
+      pictureProfile: "",
+      setPictureProfile: (pictureProfile) => set(() => ({ pictureProfile })),
       loginToast: true,
       toggleLoginToast: () =>
         set((state) => ({ loginToast: !state.loginToast })),
