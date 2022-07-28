@@ -6,8 +6,10 @@ export const ApprovalModalContent = ({
   onAction,
   register,
   formError,
+  handleSubmit,
 }: {
   onAction: (type: string) => void;
+  handleSubmit: any;
   register: UseFormRegister<any>;
   formError?: {
     [error: string]: string[];
@@ -16,7 +18,7 @@ export const ApprovalModalContent = ({
   return (
     <>
       <div className="mt-3">Are your sure ? </div>
-      <div>
+      <form onSubmit={handleSubmit}>
         <FileUpload
           name="image"
           placeholder="upload"
@@ -37,7 +39,7 @@ export const ApprovalModalContent = ({
             No
           </button>
         </div>
-      </div>
+      </form>
     </>
   );
 };

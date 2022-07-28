@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "react-toastify";
 import Modal from "../../components/custom/Modal";
@@ -78,6 +78,14 @@ const Order = () => {
   const { register, handleSubmit, reset } = useForm<IPic>();
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
 
+  const uploadRejectPicture = () => {
+    console.log("reject upload");
+  };
+  const onSubmit: SubmitHandler<IPic> = (dataProductPost) => {
+    uploadRejectPicture();
+    console.log(dataProductPost);
+  };
+
   const handleApproval = (id: string, action: string) => {
     if (action == "3") {
       setModalState(true);
@@ -98,6 +106,7 @@ const Order = () => {
         content={
           <ApprovalModalContent
             register={register}
+            handleSubmit={handleSubmit(onSubmit)}
             formError={formError.errors}
             onAction={(action) => {
               console.log(action);
