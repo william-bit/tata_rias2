@@ -1,6 +1,11 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useState } from "react";
-import { SubmitHandler, useForm, UseFormReset } from "react-hook-form";
+import {
+  SubmitHandler,
+  useForm,
+  UseFormReset,
+  Controller,
+} from "react-hook-form";
 import {
   QueryObserverResult,
   RefetchOptions,
@@ -99,7 +104,8 @@ const Product = () => {
     setCurrentPage(value);
   };
 
-  const { register, handleSubmit, setValue, reset } = useForm<IProductParam>();
+  const { register, handleSubmit, setValue, reset, control } =
+    useForm<IProductParam>();
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
   const navigate = useNavigate();
 
@@ -134,6 +140,8 @@ const Product = () => {
         formError={formError.errors}
         handleSubmit={handleSubmit(onSubmit)}
         register={register}
+        control={control}
+        Controller={Controller}
         onReset={onReset}
       ></InputForm>
       <div className="flex-initial w-full overflow-auto">

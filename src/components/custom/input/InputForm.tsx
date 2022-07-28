@@ -1,6 +1,7 @@
 import { Path, UseFormRegister } from "react-hook-form";
 import { TextInput } from "./TextInput";
 import { FileUpload } from "./FileUpload";
+import { InputNumber } from "./InputNumber";
 
 export interface IInput {
   label?: string;
@@ -13,11 +14,13 @@ export interface IInput {
 }
 
 const InputForm = ({
+  control,
   register,
   onReset,
   handleSubmit,
   formError,
 }: {
+  control: any;
   register: UseFormRegister<any>;
   formError?: {
     [error: string]: string[];
@@ -48,13 +51,14 @@ const InputForm = ({
             error={formError?.name}
             register={register}
           ></TextInput>
-          <TextInput
+          <InputNumber
             name="price"
             placeholder="Price"
-            type="number"
             error={formError?.price}
-            register={register}
-          ></TextInput>
+            control={control}
+            prefix="Rp."
+            suffix=".00"
+          ></InputNumber>
           <TextInput
             name="location"
             placeholder="location"
