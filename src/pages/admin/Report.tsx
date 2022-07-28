@@ -1,11 +1,14 @@
 import { AxiosError } from "axios";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "react-toastify";
+import Modal from "../../components/custom/Modal";
 import { TableCustom } from "../../components/custom/table/Table";
 import Admin from "../../components/layouts/Admin";
 import { getListTransactionVendor } from "../../utils/data";
-import { storeApprovalOrder } from "../../utils/postData";
+import { IProfilePicParam, storeApprovalOrder } from "../../utils/postData";
+import { ApprovalModalContent } from "./ApprovalModalContent";
 const Order = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -56,12 +59,61 @@ const Order = () => {
       },
     }
   );
+  const [modalState, setModalState] = useState(false);
+  const [modalData, setModalData] = useState({
+    action: "",
+    id: "",
+  });
+
+  interface IPic {
+    name: string;
+  }
+  interface ILaravelApiErrorReturn {
+    message?: string;
+    errors?: {
+      [error: string]: string[];
+    };
+  }
+
+  const { register, handleSubmit, reset } = useForm<IPic>();
+  const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
+
   const handleApproval = (id: string, action: string) => {
-    approvalPost.mutate({ type: action, id });
+    if (action == "3") {
+      setModalState(true);
+      setModalData({ id, action });
+    } else {
+      approvalPost.mutate({ type: action, id });
+    }
   };
 
   return (
     <Admin>
+      <Modal
+        title="Approval reject"
+        widthAndHeight={{
+          width: "40%",
+          height: "60%",
+        }}
+        content={
+          <ApprovalModalContent
+            register={register}
+            formError={formError.errors}
+            onAction={(action) => {
+              console.log(action);
+              if (action == "yes") {
+                approvalPost.mutate({
+                  type: modalData.action,
+                  id: modalData.id,
+                });
+              }
+              setModalState(false);
+            }}
+          />
+        }
+        closeModal={() => setModalState(false)}
+        isOpen={modalState}
+      />
       <div className="flex-initial w-full overflow-auto">
         <TableCustom
           data={data}

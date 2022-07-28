@@ -99,3 +99,14 @@ export const storeApprovalOrder = (
     }
   );
 };
+
+export interface IProfileParam {
+  fullName: string;
+}
+export const storeProfile = (formData: FormData) => {
+  return axios.post(Url.profile, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};

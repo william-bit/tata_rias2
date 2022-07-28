@@ -28,4 +28,5 @@ export class Url {
     this.baseUrl + "/vendor/picture";
   public static readonly detailProduct =
     this.baseUrl + "/product/detail-product";
+  public static readonly profile = this.baseUrl + "/profile";
 }

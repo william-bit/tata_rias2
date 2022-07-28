@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Modal from "../../components/custom/Modal";
+import Modal from "../../components/custom/ModalProfile";
 import { ProfileForm } from "../../components/custom/ProfileForm";
 import Admin from "../../components/layouts/Admin";
 import SidebarProfile from "../../components/layouts/SidebarProfile";
