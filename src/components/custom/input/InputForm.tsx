@@ -57,7 +57,7 @@ const InputForm = ({
             error={formError?.price}
             control={control}
             prefix="Rp."
-            suffix=".00"
+            suffix=",00"
           ></InputNumber>
           <TextInput
             name="location"
