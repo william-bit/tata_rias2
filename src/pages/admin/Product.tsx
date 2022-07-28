@@ -46,6 +46,11 @@ const useProductUpdateAndSubmit = (
       for (const property in data) {
         if (property == "image") {
           formData.append("image", data[property as keyof IProductParam][0]);
+        } else if (property == "price") {
+          let splitPrice = data[property as keyof IProductParam].split(",");
+          if (splitPrice[0]) {
+            formData.append("price", splitPrice[0].replace(/\D/g, ""));
+          }
         } else {
           formData.append(property, data[property as keyof IProductParam]);
         }
@@ -141,7 +146,6 @@ const Product = () => {
         handleSubmit={handleSubmit(onSubmit)}
         register={register}
         control={control}
-        Controller={Controller}
         onReset={onReset}
       ></InputForm>
       <div className="flex-initial w-full overflow-auto">

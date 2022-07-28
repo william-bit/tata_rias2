@@ -30,6 +30,7 @@ export const InputNumber = (props: INumber) => {
             placeholder={props.placeholder}
             prefix={props.prefix}
             suffix={props.suffix}
+            type="text"
             thousandSeparator="."
             decimalSeparator=","
             {...field}

@@ -43,8 +43,10 @@ const Card = ({ id, title, description, detail, src, price }: ICard) => {
       <div className="w-full mx-3 text-left">
         <div>{title}</div>
         <div className="text-xs text-blue-500">{description}</div>
-        <div className="text-xs text-justify">{detail}</div>
-        <div className="text-xs text-justify">
+        <div className="text-xs text-justify text-gray-600 line-through">
+          Rp.{formatNumber(parseInt(price) - (parseInt(price) * 1) / 10)}
+        </div>
+        <div className="ml-1 text-xs text-justify">
           Rp.{formatNumber(parseInt(price))}
         </div>
       </div>

@@ -2,6 +2,7 @@ import { Path, UseFormRegister } from "react-hook-form";
 import { TextInput } from "./TextInput";
 import { FileUpload } from "./FileUpload";
 import { InputNumber } from "./InputNumber";
+import { TextArea } from "./TextArea";
 
 export interface IInput {
   label?: string;
@@ -65,12 +66,12 @@ const InputForm = ({
             error={formError?.location}
             register={register}
           ></TextInput>
-          <TextInput
+          <TextArea
             name="description"
             placeholder="Description"
             error={formError?.description}
             register={register}
-          ></TextInput>
+          ></TextArea>
           <FileUpload
             name="image"
             placeholder="upload"
