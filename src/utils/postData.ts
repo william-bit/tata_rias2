@@ -32,8 +32,8 @@ export interface IProfilePicParam {
   description: string;
   location: string;
 }
-export const storeProfilePicVendor = (formData: FormData) => {
-  return axios.post(Url.storeProfilePicVendor, formData, {
+export const storeProfilePic = (formData: FormData) => {
+  return axios.post(Url.storeProfilePic, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

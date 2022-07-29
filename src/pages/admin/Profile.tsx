@@ -10,7 +10,7 @@ import Admin from "../../components/layouts/Admin";
 import SidebarProfile from "../../components/layouts/SidebarProfile";
 import { Header } from "../../components/Navbar/Header";
 import { useStore } from "../../store/store";
-import { storeProfilePicVendor } from "../../utils/postData";
+import { storeProfilePic } from "../../utils/postData";
 
 let listMenu = [
   { label: "Personal Info" },
@@ -52,7 +52,7 @@ export const AdminProfile = () => {
           formData.append(property, data[property as keyof IProfilePic]);
         }
       }
-      return storeProfilePicVendor(formData);
+      return storeProfilePic(formData);
     },
     {
       onSuccess: (res) => {
