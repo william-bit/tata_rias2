@@ -30,7 +30,6 @@ export interface ITableCustom {
 }
 
 export const TableCustom = (props: ITableCustom) => {
-  console.log(props.data?.data.resource);
   return (
     <div className="w-full p-8 bg-white border-2 ">
       <Header subTitle={props.subTitle} title={props.title}></Header>
@@ -85,7 +84,7 @@ export const TableCustom = (props: ITableCustom) => {
                 {!props.isLoading &&
                   !props.isFetching &&
                   !props.isError &&
-                  !props.data?.data.resource.data && (
+                  !props.data?.data?.resource?.data && (
                     <tr key={1}>
                       <td align="center" colSpan={6}>
                         Data Empty
@@ -101,14 +100,14 @@ export const TableCustom = (props: ITableCustom) => {
                       (row: any, index: number) => (
                         <TrCustom
                           row={row}
+                          setting={props.data?.data?.table?.rowSetting}
                           handleDelete={props.handleDelete}
                           handleEdit={props.handleEdit}
                           isDelete={props.isDelete}
                           config={props.config}
                           customAction={
-                            props.handleCustom
-                              ? props.data?.data?.table?.customAction
-                              : undefined
+                            props.handleCustom &&
+                            props.data?.data?.table?.customAction
                           }
                           handleCustomAction={props.handleCustom}
                           key={index}

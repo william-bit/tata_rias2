@@ -25,11 +25,13 @@ export const Transaction = () => {
   );
   const config: Array<{ title: string; key: string; type?: string }> = [
     { title: "Photo", key: "photoProduct", type: "image" },
+    { title: "Photo Reject", key: "photo", type: "image" },
     { title: "Name", key: "productName" },
     { title: "Date", key: "created_at" },
     { title: "Price", key: "productPrice" },
     { title: "Location", key: "location" },
     { title: "Total Payment", key: "total" },
+    { title: "Status", key: "status", type: "status" },
   ];
   console.log(data);
   const handleChange = (value: number) => {

@@ -5,12 +5,14 @@ export const TrCustom = ({
   row,
   config,
   isDelete,
+  setting,
   customAction,
   handleDelete,
   handleEdit,
   handleCustomAction,
 }: {
   row: any;
+  setting: any;
   config: Array<{ title: string; key: string; type?: string }>;
   isDelete?: boolean;
   customAction?: Array<{ label: string; action: string; color: string }>;
@@ -18,6 +20,7 @@ export const TrCustom = ({
   handleDelete?: (id: number) => void;
   handleEdit?: (id: number) => void;
 }) => {
+  console.log(setting);
   return (
     <tr key={row.id}>
       {config.map((valueConfig, indexConfig) => (
@@ -27,6 +30,7 @@ export const TrCustom = ({
         >
           <TdCustom
             type={valueConfig.type}
+            setting={setting}
             value={row[valueConfig.key]}
           ></TdCustom>
         </td>
@@ -60,7 +64,7 @@ export const TrCustom = ({
           ></PencilIcon>
         </td>
       )}
-      {customAction && handleCustomAction && (
+      {setting?.action == row?.status && customAction && handleCustomAction && (
         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
           {customAction.map((_value, index) => {
             let bgColor = "";
