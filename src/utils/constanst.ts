@@ -31,4 +31,5 @@ export class Url {
   public static readonly detailProduct =
     this.baseUrl + "/product/detail-product";
   public static readonly profile = this.baseUrl + "/profile";
+  public static readonly reject = this.baseUrl + "/order/reject/photo";
 }

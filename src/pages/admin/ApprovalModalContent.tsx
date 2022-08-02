@@ -27,7 +27,7 @@ export const ApprovalModalContent = ({
         ></FileUpload>
         <div className="flex mt-10 space-x-5">
           <button
-            onClick={() => onAction("yes")}
+            type="submit"
             className="w-1/2 px-2 py-2 font-bold text-white bg-green-600 rounded-md hover:bg-gray-700 text-md"
           >
             Yes

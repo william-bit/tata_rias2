@@ -110,3 +110,11 @@ export const storeProfile = (formData: FormData) => {
     },
   });
 };
+
+export const rejectPhoto = (formData: FormData) => {
+  return axios.post(Url.reject, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};

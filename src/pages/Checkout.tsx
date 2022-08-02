@@ -114,6 +114,7 @@ export const Checkout = () => {
       const formData = new FormData();
       formData.append("id", data?.data.id);
       formData.append("total", "1");
+      formData.append("destination", destination.toString());
       for (const property in postData) {
         if (property == "image") {
           formData.append(

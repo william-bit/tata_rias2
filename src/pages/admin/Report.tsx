@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Modal from "../../components/custom/Modal";
 import { TableCustom } from "../../components/custom/table/Table";
 import Admin from "../../components/layouts/Admin";
+import { usePostPictureReject } from "../../hooks/usePostPictureReject";
 import { getListTransactionVendor } from "../../utils/data";
 import { IProfilePicParam, storeApprovalOrder } from "../../utils/postData";
 import { ApprovalModalContent } from "./ApprovalModalContent";
@@ -23,7 +24,9 @@ const Order = () => {
     { title: "Name Customer", key: "custName" },
     { title: "Customer Phone", key: "phone_number" },
     { title: "Customer Address", key: "address" },
-    { title: "Total", key: "price", type: "number" },
+    { title: "Price", key: "price", type: "number" },
+    { title: "Total", key: "total", type: "number" },
+    { title: "Destination", key: "destination" },
     { title: "Unit", key: "unit" },
   ];
   console.log(data);
@@ -68,7 +71,8 @@ const Order = () => {
   });
 
   interface IPic {
-    name: string;
+    image: string;
+    id: string;
   }
   interface ILaravelApiErrorReturn {
     message?: string;
@@ -77,20 +81,44 @@ const Order = () => {
     };
   }
 
-  const { register, handleSubmit, reset } = useForm<IPic>();
+  const { register, handleSubmit, reset, setValue } = useForm<IPic>();
+  register("id", { value: "" });
   const [formError, setFormError] = useState<ILaravelApiErrorReturn>({});
 
-  const uploadRejectPicture = () => {
-    console.log("reject upload");
-  };
+  const { mutate: postPicture } = usePostPictureReject(
+    () => {
+      setModalState(false);
+      toast("Success Reject ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    },
+    () => {
+      toast("Failed Reject ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  );
+
   const onSubmit: SubmitHandler<IPic> = (dataProductPost) => {
-    uploadRejectPicture();
-    console.log(dataProductPost);
+    postPicture(dataProductPost);
   };
 
   const handleApproval = (id: string, action: string) => {
     if (action == "3") {
       setModalState(true);
+      setValue("id", id);
       setModalData({ id, action });
     } else {
       approvalPost.mutate({ type: action, id });
@@ -111,13 +139,6 @@ const Order = () => {
             handleSubmit={handleSubmit(onSubmit)}
             formError={formError.errors}
             onAction={(action) => {
-              console.log(action);
-              if (action == "yes") {
-                approvalPost.mutate({
-                  type: modalData.action,
-                  id: modalData.id,
-                });
-              }
               setModalState(false);
             }}
           />
