@@ -94,6 +94,7 @@ export const Selection = () => {
 export const Checkout = () => {
   let { productId } = useParams();
   let navigate = useNavigate();
+  let [destination, setDestination] = useState(0);
 
   let [day, setDuration] = useState(1);
 
@@ -242,7 +243,10 @@ export const Checkout = () => {
                       <h2 className="text-xl font-bold">{data?.data.name}</h2>
                       <p className="text-sm">{data?.data.description}</p>
                       <span className="text-red-600">Price</span>
-                      <div>Rp.{formatNumber(parseInt(data?.data.price))}</div>
+                      <div>
+                        Rp.
+                        {formatNumber(parseInt(data?.data.price))}
+                      </div>
                       <div className="text-xs font-bold text-red-600">
                         Min 3 hour before appointment
                       </div>
@@ -266,9 +270,14 @@ export const Checkout = () => {
                         ></input>
                       </div>
                       <div className="flex items-center mt-2">
-                        <select className="w-full border border-gray-500 rounded h-7">
-                          <option>On Site</option>
-                          <option>To Destination</option>
+                        <select
+                          onChange={(e) =>
+                            setDestination(parseInt(e.target.value))
+                          }
+                          className="w-full border border-gray-500 rounded h-7"
+                        >
+                          <option value={0}>On Site</option>
+                          <option value={1}>To Destination</option>
                         </select>
                       </div>
                     </div>
@@ -302,7 +311,10 @@ export const Checkout = () => {
               <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                 Total
                 <span className="ml-2">
-                  Rp.{formatNumber(day * data?.data.price)}
+                  Rp.
+                  {formatNumber(
+                    day * data?.data.price + (destination ? 100000 : 0)
+                  )}
                 </span>
               </div>
             </div>
