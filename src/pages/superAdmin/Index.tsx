@@ -11,6 +11,8 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { useGetListProfit } from "../../hooks/useGetListProfit";
+import { AxiosResponse } from "axios";
 
 ChartJS.register(
   CategoryScale,
@@ -35,24 +37,43 @@ export const options = {
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+const monthName = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Augustus",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Order Count",
-      data: labels.map(() => Math.random() * 100),
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
+const dataReform = (dataProfit: AxiosResponse | undefined) => {
+  let resource = dataProfit?.data?.resource?.data;
+  let data = resource?.map((value: any) => value.sum);
+  let labels = resource?.map((value: any) => value.month);
+  return {
+    labels,
+    datasets: [
+      {
+        label: "Profit Report",
+        data: data,
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
 };
 export const Index = () => {
+  const dataPost = useGetListProfit();
   return (
     <SuperAdmin>
       <div className="flex flex-col w-full h-full">
         <div className="h-80 mt-11">
-          <Bar options={options} data={data} />
+          <Bar options={options} data={dataReform(dataPost.data)} />
         </div>
       </div>
     </SuperAdmin>

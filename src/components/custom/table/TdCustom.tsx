@@ -1,3 +1,5 @@
+import { formatNumber } from "../../../utils/helper";
+
 export const TdCustom = ({
   type,
   value,
@@ -13,6 +15,9 @@ export const TdCustom = ({
         </div>
       </div>
     );
+  }
+  if (type == "number") {
+    return <span>{formatNumber(parseInt(value))}</span>;
   }
   if (type == "status") {
     let color = "bg-green-200";

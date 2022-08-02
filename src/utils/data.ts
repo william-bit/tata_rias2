@@ -44,3 +44,7 @@ export const getListProduct = (currentPage: number) => {
 export const getUserPicture = () => {
   return axios.get(Url.picture); // credentials didn't match
 };
+
+export const getProfitPerMonth = () => {
+  return axios.get(Url.profitPerMonth); // credentials didn't match
+};
