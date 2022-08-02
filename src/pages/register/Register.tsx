@@ -18,6 +18,7 @@ export interface ILaravelApiErrorReturn {
     name?: Array<string>;
     email?: Array<string>;
     address?: Array<string>;
+    phone_number?: Array<string>;
     password?: Array<string>;
     password_confirmation?: Array<string>;
   };
@@ -27,6 +28,7 @@ const Register = () => {
   const [form, setForm] = useState<IRegisterParam>({
     name: "",
     address: "",
+    phone_number: "",
     password_confirmation: "",
     password: "",
     email: "",
@@ -143,6 +145,19 @@ const Register = () => {
                 name="Address"
                 placeholder="Address"
                 onChange={(event) => handleChange("address", event)}
+              />
+              {formError.errors?.address?.map((item: string, i: number) => (
+                <div key={i} className="text-sm text-center text-red-600">
+                  {item}
+                </div>
+              ))}
+
+              <input
+                type="text"
+                className="block w-full p-3 mt-4 border rounded border-grey-light"
+                name="phone_number"
+                placeholder="Phone Number"
+                onChange={(event) => handleChange("phone_number", event)}
               />
               {formError.errors?.address?.map((item: string, i: number) => (
                 <div key={i} className="text-sm text-center text-red-600">

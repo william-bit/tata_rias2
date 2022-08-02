@@ -21,7 +21,9 @@ const Order = () => {
     { title: "Photo Product", key: "photo", type: "image" },
     { title: "Photo Payment", key: "photoPayment", type: "image" },
     { title: "Name Customer", key: "custName" },
-    { title: "Total", key: "price" },
+    { title: "Customer Phone", key: "phone_number" },
+    { title: "Customer Address", key: "address" },
+    { title: "Total", key: "price", type: "number" },
     { title: "Unit", key: "unit" },
   ];
   console.log(data);

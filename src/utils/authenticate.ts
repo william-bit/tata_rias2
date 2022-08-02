@@ -41,6 +41,7 @@ export interface IRegisterParam {
   name: string;
   email: string;
   address: string;
+  phone_number: string;
   password: string;
   password_confirmation: string;
   type?: number;
