@@ -262,7 +262,7 @@ export const Checkout = () => {
                               { minimumIntegerDigits: 2, useGrouping: false }
                             ) +
                             "-" +
-                            new Date().getDate() +
+                            ("0" + new Date().getDate()).slice(-2) +
                             "T23:59:59"
                           }
                           className="border border-gray-500 rounded"
