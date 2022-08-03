@@ -8,7 +8,7 @@ export function usePictureProfile() {
   const setUserPicture = useStore((state) => state.setPictureProfile);
   const data = useQuery("userPicture", getUserPicture);
   useEffect(() => {
-    if (!userPicture) {
+    if (userPicture !== data.data?.data) {
       setUserPicture(data.data?.data);
     }
   }, []);
