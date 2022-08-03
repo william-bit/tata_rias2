@@ -16,6 +16,7 @@ const Admin = (props: IAdmin) => {
     toggleLoginToast();
   }
   usePictureProfile();
+
   return (
     <>
       <ToastContainer />

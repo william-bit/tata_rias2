@@ -26,8 +26,10 @@ export default function Sidebar({ listMenu, color }: ISidebar) {
   const setUserProfile = useStore((state) => state.setUserProfile);
   const userProfile = useStore((state) => state.userProfile);
   const navigate = useNavigate();
+  const setUserPicture = useStore((state) => state.setPictureProfile);
   const handleLogout = () => {
     console.log("hai");
+    setUserPicture("");
     setUserProfile({} as IProfile);
     navigate("/");
   };

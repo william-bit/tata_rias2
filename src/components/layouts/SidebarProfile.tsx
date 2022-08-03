@@ -18,8 +18,10 @@ interface ISidebar {
 export default function SidebarProfile({ listMenu }: ISidebar) {
   const setUserProfile = useStore((state) => state.setUserProfile);
   const navigate = useNavigate();
+  const setUserPicture = useStore((state) => state.setPictureProfile);
   const handleLogout = () => {
     console.log("hai");
+    setUserPicture("");
     setUserProfile({} as IProfile);
     navigate("/");
   };

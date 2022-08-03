@@ -3,7 +3,6 @@ import { Link } from "../Links";
 
 export const Header = () => {
   const userProfile = useStore((state) => state.userProfile);
-  console.log("tet", userProfile);
   return (
     <div className="sticky top-0 flex justify-between w-full px-8 py-4 text-black bg-white border">
       <Link href="/">

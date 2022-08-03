@@ -25,6 +25,8 @@ export interface ILaravelApiErrorReturn {
 }
 
 const Register = () => {
+  const setUserPicture = useStore((state) => state.setPictureProfile);
+  setUserPicture("");
   const [form, setForm] = useState<IRegisterParam>({
     name: "",
     address: "",

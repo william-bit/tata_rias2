@@ -37,9 +37,11 @@ export const ProfileForm = () => {
   );
 
   const { setValue, register, handleSubmit, reset } = useForm<IProfileParam>();
-  const dataAccount = useGetBankAccount();
   setValue("fullName", userProfile.name);
-  setValue("account", dataAccount.data?.data);
+  if (userProfile.role == 1) {
+    const dataAccount = useGetBankAccount();
+    setValue("account", dataAccount.data?.data);
+  }
 
   const onSubmit: SubmitHandler<IProfileParam> = (dataForm) => {
     postProfile(dataForm);

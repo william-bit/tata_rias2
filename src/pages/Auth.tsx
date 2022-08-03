@@ -17,6 +17,8 @@ export interface ILaravelApiErrorReturn {
   };
 }
 const Auth = () => {
+  const setUserPicture = useStore((state) => state.setPictureProfile);
+  setUserPicture("");
   const [form, setForm] = useState<ILoginParam>({
     email: "",
     password: "",

@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import InputForm from "../../components/custom/input/InputForm";
 import { TableCustom } from "../../components/custom/table/Table";
 import Admin from "../../components/layouts/Admin";
+import { usePictureProfile } from "../../hooks/usePictureProfile";
 import { getDetailProduct, getListProduct } from "../../utils/data";
 import {
   IProductParam,

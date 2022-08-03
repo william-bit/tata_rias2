@@ -18,7 +18,7 @@ export default function Header({ listMenu }: ISidebar) {
     }
   }
   const userProfile = useStore((state) => state.userProfile);
-  let userPicture = usePictureProfile();
+  const userPicture = useStore((state) => state.pictureProfile);
   return (
     <div className="flex items-center justify-between flex-1 ml-3 font-bold">
       {label}
