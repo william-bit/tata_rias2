@@ -159,11 +159,13 @@ const Register = () => {
                 placeholder="Phone Number"
                 onChange={(event) => handleChange("phone_number", event)}
               />
-              {formError.errors?.address?.map((item: string, i: number) => (
-                <div key={i} className="text-sm text-center text-red-600">
-                  {item}
-                </div>
-              ))}
+              {formError.errors?.phone_number?.map(
+                (item: string, i: number) => (
+                  <div key={i} className="text-sm text-center text-red-600">
+                    {item}
+                  </div>
+                )
+              )}
 
               <input
                 type="password"
