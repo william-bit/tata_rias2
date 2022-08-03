@@ -46,7 +46,7 @@ const useProductUpdateAndSubmit = (
       for (const property in data) {
         if (property == "image") {
           formData.append("image", data[property as keyof IProductParam][0]);
-        } else if (property == "price") {
+        } else if (property == "price" && typeof data["price"] == "string") {
           let splitPrice = data[property as keyof IProductParam].split(",");
           if (splitPrice[0]) {
             formData.append("price", splitPrice[0].replace(/\D/g, ""));
