@@ -102,6 +102,7 @@ export const storeApprovalOrder = (
 
 export interface IProfileParam {
   fullName: string;
+  account?: string;
 }
 export const storeProfile = (formData: FormData) => {
   return axios.post(Url.profile, formData, {

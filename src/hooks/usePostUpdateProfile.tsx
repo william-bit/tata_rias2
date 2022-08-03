@@ -10,6 +10,9 @@ export function usePostUpdateProfile(
     (data: IProfileParam) => {
       const formData = new FormData();
       formData.append("fullname", data.fullName);
+      if (data.account) {
+        formData.append("account", data.account);
+      }
       return storeProfile(formData);
     },
     {

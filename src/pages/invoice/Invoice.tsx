@@ -36,9 +36,9 @@ export const Invoice = () => {
                           Invoice Detail:
                         </p>
                         <p> Yuksss Tata Rias ✨</p>
-                        <p>Fake Street 123</p>
-                        <p>San Javier</p>
-                        <p>CA 1234</p>
+                        <p>Puri Lembangsari Block C-002/16 </p>
+                        <p>Street Pandawa 5</p>
+                        <p>021-1234-555</p>
                       </div>
                       <div className="text-sm font-light text-slate-500">
                         <p className="text-sm font-normal text-slate-700">
