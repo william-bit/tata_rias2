@@ -1,6 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useGetBankAccount } from "../../hooks/useGetBankAccount";
 import { usePostUpdateProfile } from "../../hooks/usePostUpdateProfile";
 import { useStore } from "../../store/store";
 import { IProfileParam } from "../../utils/postData";
@@ -36,7 +37,9 @@ export const ProfileForm = () => {
   );
 
   const { setValue, register, handleSubmit, reset } = useForm<IProfileParam>();
+  const dataAccount = useGetBankAccount();
   setValue("fullName", userProfile.name);
+  setValue("account", dataAccount.data?.data);
 
   const onSubmit: SubmitHandler<IProfileParam> = (dataForm) => {
     postProfile(dataForm);

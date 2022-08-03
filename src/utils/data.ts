@@ -48,3 +48,7 @@ export const getUserPicture = () => {
 export const getProfitPerMonth = () => {
   return axios.get(Url.profitPerMonth); // credentials didn't match
 };
+
+export const getVendorBankAccount = (id: string | undefined) => {
+  return axios.get(Url.accountVendor + "?id=" + id); // credentials didn't match
+};

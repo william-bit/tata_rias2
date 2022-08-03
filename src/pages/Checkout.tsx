@@ -10,6 +10,7 @@ import { useMutation, useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Header } from "../components/Navbar/Header";
+import { useGetBankAccount } from "../hooks/useGetBankAccount";
 import { getDetailProduct } from "../utils/data";
 import { formatNumber } from "../utils/helper";
 import { ICheckoutParam, storeCheckout } from "../utils/postData";
@@ -156,6 +157,7 @@ export const Checkout = () => {
   );
 
   const { register, handleSubmit, reset } = useForm<ICheckoutParam>();
+  const account = useGetBankAccount(data?.data.vendor_id);
 
   const onSubmit: SubmitHandler<ICheckoutParam> = (dataForm) => {
     checkoutPost(dataForm);
@@ -189,10 +191,7 @@ export const Checkout = () => {
                       Payment Proof
                     </label>
                     <div className="mb-3">
-                      Please transfer to BCA : 73123131
-                    </div>
-                    <div className="mb-3">
-                      Please transfer to Mandari : 33123131
+                      Please transfer to BCA : {account.data?.data}
                     </div>
                     <FileUpload register={register("image")}></FileUpload>
                   </div>
