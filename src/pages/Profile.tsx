@@ -2,6 +2,7 @@ import React from "react";
 import { ProfileForm } from "../components/custom/ProfileForm";
 import SidebarProfile from "../components/layouts/SidebarProfile";
 import { Header } from "../components/Navbar/Header";
+import { usePictureProfile } from "../hooks/usePictureProfile";
 import { ProfileCard } from "./ProfileCard";
 
 let listMenu = [
@@ -10,6 +11,7 @@ let listMenu = [
 ];
 
 export const Profile = () => {
+  usePictureProfile();
   return (
     <div>
       <Header></Header>

@@ -84,7 +84,6 @@ export const ProfileCard = () => {
   };
 
   const userPicture = useStore((state) => state.pictureProfile);
-  console.log(userProfile);
   return (
     <div className="p-3 bg-white border-t-4 border-blue-400 w-72">
       <Modal
