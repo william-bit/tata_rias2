@@ -191,7 +191,7 @@ export const Checkout = () => {
                       Payment Proof
                     </label>
                     <div className="mb-3">
-                      Please transfer to BCA : {account.data?.data}
+                      Please transfer : {account.data?.data}
                     </div>
                     <FileUpload register={register("image")}></FileUpload>
                   </div>
