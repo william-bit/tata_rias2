@@ -1,6 +1,6 @@
+import background from "../../assets/images/BackgroundVendor.jpg";
 import List from "../components/List/List";
 import { Header } from "../components/Navbar/Header";
-import background from "../../assets/images/BackgroundVendor.jpg";
 
 const Vendor = () => {
   return (

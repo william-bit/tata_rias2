@@ -4,6 +4,7 @@ export class Url {
   public static readonly profitPerMonth = this.baseUrl + "/super-admin/profit";
   public static readonly accountVendor = this.baseUrl + "/vendor/bank-account";
   public static readonly user = this.baseUrl + "/user-api";
+  public static readonly deleteProduct = this.baseUrl + "/product/destroy";
   public static readonly token = "http://127.0.0.1:8000/sanctum/csrf-cookie";
   public static readonly register = this.baseUrl + "/register";
   public static readonly listProduct = this.baseUrl + "/product";

@@ -119,3 +119,11 @@ export const rejectPhoto = (formData: FormData) => {
     },
   });
 };
+
+export const deleteProduct = (id: string | undefined) => {
+  return axios.post(Url.deleteProduct + `/${id}`, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};

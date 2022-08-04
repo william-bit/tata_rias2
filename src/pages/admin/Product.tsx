@@ -3,27 +3,25 @@ import { useState } from "react";
 import {
   SubmitHandler,
   useForm,
-  UseFormReset,
-  Controller,
+  UseFormReset
 } from "react-hook-form";
 import {
   QueryObserverResult,
   RefetchOptions,
   RefetchQueryFilters,
   useMutation,
-  useQuery,
+  useQuery
 } from "react-query";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import InputForm from "../../components/custom/input/InputForm";
 import { TableCustom } from "../../components/custom/table/Table";
 import Admin from "../../components/layouts/Admin";
-import { usePictureProfile } from "../../hooks/usePictureProfile";
 import { getDetailProduct, getListProduct } from "../../utils/data";
 import {
   IProductParam,
   storeProduct,
-  updateProduct,
+  updateProduct
 } from "../../utils/postData";
 
 interface ILaravelApiErrorReturn {
@@ -139,6 +137,34 @@ const Product = () => {
     });
     console.log(id);
   };
+  const { mutate: postDelete } = usePostDeleteProduct(
+    () => {
+      refetch();
+      toast("Success Deactivate", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    },
+    () => {
+      toast("Failed Deactivate ", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  );
+  const handleDelete = (id: string) => {
+    postDelete({ id: id });
+  };
 
   return (
     <Admin>
@@ -154,7 +180,7 @@ const Product = () => {
           data={data}
           config={config}
           isDelete={true}
-          handleDelete={(id) => console.log(id)}
+          handleDelete={(id) => handleDelete(id.toString())}
           currentPage={currentPage}
           error={error}
           isLoading={isLoading}
