@@ -1,27 +1,24 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { useState } from "react";
-import {
-  SubmitHandler,
-  useForm,
-  UseFormReset
-} from "react-hook-form";
+import { SubmitHandler, useForm, UseFormReset } from "react-hook-form";
 import {
   QueryObserverResult,
   RefetchOptions,
   RefetchQueryFilters,
   useMutation,
-  useQuery
+  useQuery,
 } from "react-query";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import InputForm from "../../components/custom/input/InputForm";
 import { TableCustom } from "../../components/custom/table/Table";
 import Admin from "../../components/layouts/Admin";
+import { usePostDeleteProduct } from "../../hooks/usePostDeleteProduct";
 import { getDetailProduct, getListProduct } from "../../utils/data";
 import {
   IProductParam,
   storeProduct,
-  updateProduct
+  updateProduct,
 } from "../../utils/postData";
 
 interface ILaravelApiErrorReturn {
