@@ -1,18 +1,19 @@
-import React from "react";
 import SuperAdmin from "../../components/layouts/SuperAdmin";
 
+import { AxiosResponse } from "axios";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  ChartData,
+  ChartOptions,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { useGetListProfit } from "../../hooks/useGetListProfit";
-import { AxiosResponse } from "axios";
 
 ChartJS.register(
   CategoryScale,
@@ -23,9 +24,19 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+export const options: ChartOptions<"bar"> = {
   maintainAspectRatio: false,
   responsive: true,
+  scales: {
+    y: {
+      ticks: {
+        // Include a dollar sign in the ticks
+        callback: function (value, index, ticks) {
+          return "Rp." + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        },
+      },
+    },
+  },
   plugins: {
     legend: {
       position: "top" as const,
@@ -52,10 +63,22 @@ const monthName = [
   "December",
 ];
 
-const dataReform = (dataProfit: AxiosResponse | undefined) => {
+const dataReform = (
+  dataProfit: AxiosResponse | undefined
+): ChartData<"bar", any[], any> => {
   let resource = dataProfit?.data?.resource?.data;
-  let data = resource?.map((value: any) => value.sum);
-  let labels = resource?.map((value: any) => value.month);
+  console.log(resource);
+  let data = monthName?.map((value, index: number) => {
+    let dataMonth = resource.find((element: any) => {
+      return element.month - 1 == index;
+    });
+    if (dataMonth) {
+      return dataMonth?.sum;
+    } else {
+      return 0;
+    }
+  });
+  let labels = monthName?.map((value: any) => value);
   return {
     labels,
     datasets: [
